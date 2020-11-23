@@ -1,3 +1,33 @@
-// Put your styles in this file.
-// Shopify will compile SCSS/SASS on each deploy.
-// Note: "@import" rules aren’t supported.
+$main-font: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+$black: #000;
+$white: #FFF;
+$color-accent: #FF3700;
+$color-text: #555;
+
+$line-global: 20px; // line height value
+$gutter-global: $line-global * 2; // gutter width
+
+// Base
+* {
+    font-family: $main-font;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    margin: 0;
+    padding:0;
+    color: $black;
+    line-height: $line-global;
+}
+
+body {
+    background-color: $white;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
