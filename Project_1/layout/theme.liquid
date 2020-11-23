@@ -11,8 +11,20 @@
   {{ 'application.scss.css' | asset_url | stylesheet_tag }}
   {{ 'application.js' | asset_url | script_tag }}
 </head>
-<body>
-
+<body class = "template-{{template}}">
+  
+  {% if template != 'cart' %}
+    <a href="/cart" class="link-to-cart">
+    {% if cart.item_count > 0 %}
+      {{ 'cart.button.filled' | t }}
+    {% else %}
+      {{ 'cart.button.empty' | t }}
+    {% endif %}
+    </a>
+  {% else %}
+    <a href="/" class="link-to-home">{{ 'cart.button.close' | t }}</a>
+  {% endif %}
+  
   <main role="main">
     {{ content_for_layout }}
   </main>

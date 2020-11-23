@@ -13,18 +13,18 @@
 
 <div id="product-info">
   <div class="headline">
-    <h2>Hassle free fitness tracking</h2>
+    <h2>{{ 'product.copy.headline' | t }}</h2>
   </div>
   
   <div class="description">
-    <h3>Information</h3>
+    <h3>{{ 'product.copy.description_headline' | t }}</h3>
     {{ mainProduct.description }}
   </div>
 
   <div class="details">
     <ul>
-      <li>List item 1</li>
-      <li>List item 2</li>
+      <li>{{ 'product.details_list.item1' | t }}</li>
+      <li>{{ 'product.details_list.item2' | t }}</li>
     </ul>
   </div>
 
@@ -37,11 +37,9 @@
         {% endfor %}
       </select>
       <button type="submit" name="add" id="AddToCart">
-        Add to cart
+        {{ 'product.form.submit' | t }}
         <span class="product-price">{{ mainProduct.price | money_without_trailing_zeros }}</span>
       </button>
-      
-      
     </form>
   </div>
 </div>
