@@ -43,12 +43,54 @@ h1, h2, h3, h4, h5, h6, p {
     grid-template-columns: 1fr 1fr;
 }
 
+.valign-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.valign-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
 .main-content {
     min-height: 100vh;
     padding: $gutter-global;
+    width: 50%;
+    margin-left: auto;
+}
+
+.sticky-side-image {
+    position: fixed;
+    left: 0;
+    top: $gutter-global;
+    bottom: $gutter-global;
+
+    width: 50%;
+}
+
+.sticky-side-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 // Index Styles
 #page-index {
     
+}
+
+#product-info {
+    grid-template-rows: minmax(max-content, auto) minmax(min-content, max-content);
+}
+
+.headline {
+    padding-bottom: $line-global * 3;
+}
+
+.single-product-image {
+    width: 100%;
+    height: 100%;
 }
