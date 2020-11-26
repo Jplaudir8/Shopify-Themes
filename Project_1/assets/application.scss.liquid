@@ -14,6 +14,7 @@ $body-font-size: 15px;
 $label-font-size: 12px;
 
 $standard-border: 1px solid $color-border;
+$black-border: 1px solid $black;
 
 @mixin reset-input {
     appearance: none;
@@ -100,13 +101,23 @@ label {
     color: $color-label;
 }
 
-select {
+.styled-select {
+    position: relative;
+}
+
+.styled-select select {
     @include reset-input();
     width: 100%;
     font-size: $body-font-size;
     line-height: $line-global;
     padding: $line-global;
-    border: $standard-border;
+    border: $black-border;
+}
+
+.styled-select .select-arrow {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 button {

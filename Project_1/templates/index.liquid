@@ -40,11 +40,18 @@
       <div class="form-wrapper">
         <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
           <label for="productSelect">{{ mainProduct.options.first }}</label>
-          <select name="id" id="productSelect">
+          <div class="styled-select">
+            <select name="id" id="productSelect">
             {% for variant in mainProduct.variants %}
             <option value="{{ variant.id }}">{{ variant.title }}</option>  
             {% endfor %}
-          </select>
+            </select>
+            <div class="select-arrow">
+              <img src="{{ 'icon-arrow-down.svg' | asset_url }}"  alt=""/>
+            </div>
+          </div>
+          
+
           <button type="submit" name="add" id="add-to-cart-button">
             {{ 'product.form.submit' | t }}
             <span class="product-price">{{ mainProduct.price | money_without_trailing_zeros }}</span>
