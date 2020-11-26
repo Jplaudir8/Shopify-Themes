@@ -116,8 +116,22 @@ label {
 
 .styled-select .select-arrow {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    width: $line-global * 3;
+    background-color: $white;
+    text-align: center;
+    line-height: $line-global * 3;
+    border-left: $black-border;
+    pointer-events: none;
+}
+
+.styled-select .select-arrow img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
 }
 
 button {
@@ -156,7 +170,7 @@ button {
 .main-content {
     min-height: 100vh;
     padding: $gutter-global;
-    width: 50%;
+    width: calc(50% + #{$gutter-global}/2);
     margin-left: auto;
 }
 
@@ -165,8 +179,7 @@ button {
     left: 0;
     top: $gutter-global;
     bottom: $gutter-global;
-
-    width: 50%;
+    width: calc(50% - #{$gutter-global}/2);
 }
 
 .sticky-side-image img {
@@ -182,6 +195,10 @@ button {
 
 #product-info {
     grid-template-rows: minmax(max-content, auto) minmax(min-content, max-content);
+}
+
+#product-info-content {
+    grid-row-gap: $gutter-global / 2;
 }
 
 .headline {
