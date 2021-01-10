@@ -6,6 +6,7 @@ $color-accent: #FF3700;
 $color-text: #555;
 $color-label: #707070;
 $color-border: #DEDEDE;
+$color-empty-bg: #BBBBBB;
 
 $line-global: 20px; // line height value
 $gutter-global: $line-global * 2; // gutter width
@@ -194,6 +195,12 @@ button {
 
 // Global Styles
 
+.cart-item-count {
+    color: $white;
+    text-align: center;
+    border-radius: 100%;
+}
+
 .link-to-cart {
     position: fixed;
     top: 0;
@@ -273,4 +280,34 @@ button {
 
 #add-to-cart-button .product-price {
     float: right;
+}
+
+// Cart Styles
+
+#cart {
+    background: $color-empty-bg;
+    color: $white;
+}
+
+#cart-title {
+    position: relative;
+    /* Not all browsers accept these text-fill, text-stroke properties */
+    -webkit-text-fill-color: transparent; 
+    -webkit-text-stroke-color: $white;
+    -webkit-text-stroke-width: 2px;
+    -moz-text-fill-color: transparent; 
+    -moz-text-stroke-color: $white;
+    -moz-text-stroke-width: 2px;
+}
+
+#cart .cart-item-count {
+    display: block;
+    font-size: 0.08em;
+    border: 2px solid $white;
+    width: 2em;
+    height: 2em;
+    line-height: 2em;
+    position: absolute;
+    top: 2em;
+    right: 0;
 }
