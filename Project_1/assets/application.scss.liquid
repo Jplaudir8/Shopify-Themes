@@ -44,7 +44,7 @@ html,
 body {
     width: 100%;
     margin: 0;
-    padding:0;
+    padding: 0;
     color: $black;
     line-height: $line-global;
 }
@@ -58,6 +58,10 @@ h1, h2, h3, h4, h5, h6, p, ul, ol {
     margin: 0;
     padding: 0;
     font-weight: 400;
+}
+
+a {
+    text-decoration: none;
 }
 
 // Style Guide
@@ -187,6 +191,51 @@ button {
     height: 100%;
     object-fit: cover;
 }
+
+// Global Styles
+
+.link-to-cart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: $gutter-global;
+    color: $color-text;
+}
+
+.link-to-cart .cart-item-count {
+    display: block;
+    font-size: 0px;
+    width: 10px;
+    height: 10px;
+    background: $color-border;
+    border-radius: 100%;
+    margin-top: 4px;
+}
+
+.link-to-cart .cart-text {
+    display: none;
+    position: absolute;
+    right: calc(100% - #{$gutter-global/2});
+    top: $gutter-global;
+    white-space: nowrap;
+}
+
+.link-to-cart.cart-filled .cart-item-count { /* the style will only be applied if .link-to-cart has the class .cart-filled */
+    font-size: $label-font-size;
+    width: 20px;
+    height: 20px;
+    background: $color-accent;
+    line-height: $line-global;
+    color: $white;
+    text-align: center;
+    margin-top: 0;
+}
+
+.link-to-cart:hover .cart-text{
+    display: block;
+}
+
+
 
 // Index Styles
 #page-index {
