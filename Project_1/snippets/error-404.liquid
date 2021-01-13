@@ -1,0 +1,19 @@
+{% assign mainProduct = all_products['fitra'] %}
+
+<div id="page-404">
+
+    <div class="sticky-side-image">
+
+           <img src="{{ mainProduct.images.first | img_url: 'x1440' }}" />
+    </div>
+    <div id="content-404" class="main-content grid">
+        <div class="valign-center">
+            <p> 
+                <h1>{{ 'general.404.title' | t }}</h1>
+                <br>
+                <a href="/"> {{ 'general.404.back' | t }}</a>
+            </p>
+        </div>
+    </div>
+
+</div>
