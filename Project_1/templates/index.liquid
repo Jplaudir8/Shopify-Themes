@@ -5,7 +5,7 @@
 
    <div id="product-images" class="sticky-side-image">
       {% for image in mainProduct.images %}
-      <div class="single-product-image">
+      <div class="single-product-image" {% if image.attached_to_variant? %}data-variant="{{ image.variants.first.id }}"{% endif %} style="{% if forloop.index > 1 %}display: none;{% endif %}">
          <img src="{{ image | img_url: 'x1440' }}" />
       </div>
       {% endfor %}
@@ -42,7 +42,7 @@
                <label for="productSelect">{{ mainProduct.options.first }}</label>
 
                <div class="styled-select">
-                  <select name="id" id="productSelect">
+                  <select name="id" id="variant-id">
                      {% for variant in mainProduct.variants %}
                      <option value="{{ variant.id }}">{{ variant.title }}</option>
                      {% endfor %}
