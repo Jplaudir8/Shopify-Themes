@@ -1,3 +1,219 @@
 // Put your styles in this file.
 // Shopify will compile SCSS/SASS on each deploy.
 // Note: "@import" rules aren’t supported.
+$headline-font: 'Georgia', 'Times New Roman', Times, serif;
+$text-font: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+$black: #000000;
+$white: #FFFFFF;
+
+$light-black: #333333;
+
+$text-color: #555555;
+$text-color-white: #CCCCCC;
+$text-color-light: #707070;
+$text-color-light-white: #AAAAAA;
+
+$gold: #BEA482;
+
+$background-color: #F7F2EA;
+$header-background-color: #EEE6DD;
+$footer-background-color: #F4EDE6;
+$border-color: rgba(0,0,0,0.15);
+$border-color-white: rgba(255,255,255,0.15);
+
+$standard-border: 1px solid $border-color;
+$standard-border-white: 1px solid $border-color-white;
+
+$line-global: 20px;
+$gutter-global: $line-global;
+$offset-global: $line-global*2; // 40px;
+
+$header-height: $line-global*4; // 80px;
+
+$type-headline-lg: 50px;
+$type-headline-med: 30px;
+$type-body-med: 15px;
+$type-body-sm: 13px;
+
+$type-bold: 700;
+$type-book: 400;
+
+// Mixins
+@mixin flex-space-between {
+    display: flex;
+    // flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin spaced-caps {
+    font-size: $type-body-sm;
+    font-weight: $type-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.075em;
+}
+
+// Base
+* {
+    font-family: $text-font;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: $black;
+    line-height: $line-global;
+}
+
+body {
+    font-size: $type-body-med;
+    background-color: $background-color;
+    background-image: url('{{ "background.jpg" | asset_url }}');
+    background-size: 100%; // To make it full width
+    background-attachment: fixed; // Looks fixed even when scrolling
+    background-repeat: no-repeat;
+    padding-top: $header-height + $offset-global;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+    margin: 0;
+    padding: 0;
+    font-weight: $type-book;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+ol {
+    list-style-type: none;
+}
+
+// Styleguide
+
+h1,
+.h1
+h2,
+.h2 {
+    font-family: $headline-font;
+    font-weight: $type-bold;
+    color: $light-black;
+}
+
+h1,
+.h1 {
+    font-size: $type-headline-lg;
+    line-height: $line-global * 3;
+}
+
+h2,
+.h2 {
+    font-size: $type-headline-med;
+    line-height: $line-global * 2;
+}
+
+h4,
+.h4 {
+    color: $light-black;
+    @include spaced-caps;
+}
+
+a {
+    color: $text-color;
+
+    &:hover {
+        opacity: 0.75;
+    }
+}
+
+p {
+    color: $text-color;
+
+    a {
+        border-bottom: $standard-border;
+        &:hover {
+            border-bottom-color: $black;
+        }
+    }
+}
+
+.text-link {
+    @include spaced-caps();
+    color: $black;
+}
+
+// Utility Classes
+
+.grid {
+    display: grid;
+    grid-column-gap: $gutter-global;
+    grid-row-gap: $gutter-global;
+    
+
+    > * { // References any direct child of .grid
+        min-width: 0;
+        min-height: 0;
+    }
+}
+
+// Header
+.header-global {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $header-height;
+    background-color: $header-background-color;
+    padding: $line-global $offset-global;
+    @include flex-space-between();
+
+    .shop-link {
+        order: -1;
+    }
+
+    .cart-close-text {
+        display: none;
+    }
+}
+
+
+// Footer
+.footer-global {
+    background-color: $footer-background-color;
+    margin-top: $offset-global;
+    border-top: $standard-border;
+
+    h4 {
+        margin-bottom: $line-global;
+    }
+}
+
+
+.footer-top,
+.footer-bottom {
+    padding: $offset-global;
+}
+
+.footer-top {
+    grid-template-columns: 2fr 1fr 1fr;
+}
+
+.footer-bottom {
+    border-top: $standard-border;
+    @include flex-space-between();
+}
+
+
+.social-links {
+    a {
+        display: inline-block;
+        &:not(:last-child) {
+            margin-right: $line-global/2;
+        }
+    }
+}
