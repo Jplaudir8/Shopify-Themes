@@ -59,6 +59,50 @@ $(document).ready(function() {
             if (parseInt($quantity.val()) > max) {
                 $quantity.val(max).change();
             }
+        }
+
+        onAddToCart = function(event) {
+            event.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: '/cart/add.js',
+                data: $(this).serialize(),
+                dataType: 'json',
+                success: onCartUpdated,
+                error: onError
+            });
+        },
+        onLineRemoved = function(event) {
+            event.preventDefault();
+
+            let
+                $removeLink = $(this),
+                removeQuery = $removeLink.attr('href').split('change?')[1];
+
+            $.post('/cart/change.js', removeQuery, onCartUpdated, 'json');
+        },
+        onCartUpdated = function() {
+            $.ajax({
+                type: 'GET',
+                url: '/cart',
+                context: document.body,
+                success: function(context) {
+                    let
+                        $dataCartContents = $(context).find('.js-cart-page-contents'),
+                        dataCartHtml = $dataCartContents.html(),
+                        dataCartItemCount = $dataCartContents.attr('data-cart-item-count'),
+                        $miniCartContent = $('.js-mini-cart-contents'),
+                        $cartItemCount = $('.js-cart-item-count');
+
+                    $cartItemCount.text(dataCartItemCount);
+                    $miniCartContent.html(dataCartHtml);
+                }
+            });
+        },
+        onError = function (XMLHttpRequest, textStatus) {
+            let data = XMLHttpRequest.responseJSON;
+            alert(data.status + ' - ' + data.message + ': ' + data.description);
         };
 
     $(document).on('click', '.js-quantity-button', onQuantityButtonClick);
@@ -66,5 +110,9 @@ $(document).ready(function() {
     $(document).on('change', '.js-quantity-field', onQuantityFieldChange);
 
     $(document).on('change', '.js-variant-radio', onVariantRadioChange);
+
+    $(document).on('submit', '#add-to-cart-form', onAddToCart);
+    
+    $(document).on('click', '#mini-cart .js-remove-line', onLineRemoved);
 
 });
