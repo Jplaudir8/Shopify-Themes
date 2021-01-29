@@ -59,8 +59,7 @@ $(document).ready(function() {
             if (parseInt($quantity.val()) > max) {
                 $quantity.val(max).change();
             }
-        }
-
+        },
         onAddToCart = function(event) {
             event.preventDefault();
 
