@@ -9,18 +9,20 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
   {{ content_for_header }} <!-- Header hook for plugins -->
   {{ 'application.scss.css' | asset_url | stylesheet_tag }}
+  {{ "jquery-3.3.1.min.js" | asset_url | script_tag }}
   {{ 'application.js' | asset_url | script_tag }}
 </head>
 <body>
 
-
   {% include 'header' %}
-
 
   <main role="main">
     {{ content_for_layout }}
 
     {% include 'footer' %}
   </main>
+
+  {% include 'currencies' %}
+
 </body>
 </html>

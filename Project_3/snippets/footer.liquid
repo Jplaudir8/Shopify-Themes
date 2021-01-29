@@ -4,4 +4,9 @@
     </a>    
     {% include 'nav-list', handle: 'main-menu' %}
     {% include 'nav-list', handle: 'footer' %}
+
+    {% assign copyright_date = 'now' | date: '%Y' %}
+    <span>{{ 'footer.bottom.copyright' | t: date: copyright_date }}</span>
+
+    {% include 'currency-picker' %}
 </div>
